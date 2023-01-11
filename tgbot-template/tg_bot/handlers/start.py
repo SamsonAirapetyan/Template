@@ -1,6 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Command, CommandStart, BoundFilter
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from ..filters.Admin import IsAdmin
 
 
 
@@ -14,4 +15,6 @@ async def start_users(message: types.Message):
 
 
 def register_start_admin(dp: Dispatcher):
+    dp.register_message_handler(start_admin, CommandStart(), IsAdmin())
     dp.register_message_handler(start_users, CommandStart())
+

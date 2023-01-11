@@ -7,6 +7,8 @@ from tg_bot.config import load_config
 
 from tg_bot.handlers.start import register_start_admin
 from tg_bot.services.setting_commands import set_defoult_commands
+from tg_bot.filters.Admin import IsAdmin
+
 logger = logging.getLogger(__name__)
 
 
@@ -15,7 +17,7 @@ def register_all_middlewares(dp, config):
 
 
 def register_all_filters(dp):
-    pass
+    dp.filters_factory.bind(IsAdmin)
 
 
 def register_all_handlers(dp):
