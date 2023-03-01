@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher.filters import BoundFilter
 
-admin = [705820013]
+admin = [705820014]
 
 
 class IsAdmin(BoundFilter):

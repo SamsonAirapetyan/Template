@@ -16,11 +16,16 @@ class DbConfig:
     password: str
     user: str
     database: str
+    database_user: str
+    database_pas: str
 
 
 @dataclass
 class Miscellaneous:
-    other_params: str = None
+    wallet: str
+    qiwi_token: str
+    qiwi_p_pub: str
+    qiwi_p_sec: str
 
 
 @dataclass
@@ -44,7 +49,14 @@ def load_config(path: str = None):
             host=env.str('DB_HOST'),
             password=env.str('DB_PASS'),
             user=env.str('DB_USER'),
-            database=env.str('DB_NAME')
+            database=env.str('DB_NAME'),
+            database_user=env.str('PG_USER'),
+            database_pas=env.str('PG_PASSWORD')
         ),
-        misc=Miscellaneous()
+        misc=Miscellaneous(
+            wallet=env.str('WALLET'),
+            qiwi_token=env.str('QIWI'),
+            qiwi_p_pub=env.str('QIWI_P_PUB'),
+            qiwi_p_sec=env.str('QIWI_P_SEC')
+        )
     )
